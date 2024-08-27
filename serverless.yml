@@ -1,0 +1,32 @@
+org: kevinnk
+app: bookflight
+service: bookflight
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+functions:
+  addFlight:
+    package:
+      artifact: ./bin/addFlight.zip
+    handler: bootstrap
+    runtime: provided.al2
+
+    events:
+      - http:
+          path: addFlight
+          method: post
+
+custom:
+  scriptable:
+    hooks:
+      before:package:createDeploymentArtifacts: make build
+
+package:
+  individually: true
+
+plugins:
+  - serverless-scriptable-plugin
