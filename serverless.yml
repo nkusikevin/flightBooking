@@ -19,6 +19,16 @@ functions:
       - http:
           path: addFlight
           method: post
+  getFlights:
+    package:
+      artifact: ./bin/getFlights.zip
+    handler: bootstrap
+    runtime: provided.al2
+
+    events:
+      - http:
+          path: getFlights
+          method: get
 
 custom:
   scriptable:
