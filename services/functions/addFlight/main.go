@@ -34,12 +34,13 @@ type Flight struct {
 	SK            string    `json:"SK"`
 	FlightNumber  string    `json:"flightNumber"`
 	Origin        string    `json:"origin"`
+	Price         float64   `json:"price"`
 	Destination   string    `json:"destination"`
 	DepartureDate string    `json:"departureDate"`
 	DepartureTime string    `json:"departureTime"`
 	ArrivalDate   string    `json:"arrivalDate"`
 	ArrivalTime   string    `json:"arrivalTime"`
-	ClientNames   []string  `json:"clientNames"`
+	ClientNames   string    `json:"clientNames"`
 	CreatedAt     time.Time `dynamodbav:"CreatedAt"`
 	UpdatedAt     time.Time `dynamodbav:"UpdatedAt"`
 }
@@ -55,9 +56,10 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 
 	// Create a new Flight item
 	flightItem := Flight{
-		PK:            "FLIGHT",
-		SK:            flight.FlightNumber,
+		PK:            "FLIGHT#" + flight.FlightNumber,
+		SK:            "METADATA#" + flight.FlightNumber,
 		FlightNumber:  flight.FlightNumber,
+		Price:         flight.Price,
 		Origin:        flight.Origin,
 		Destination:   flight.Destination,
 		DepartureDate: flight.DepartureDate,

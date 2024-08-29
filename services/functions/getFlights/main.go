@@ -30,6 +30,8 @@ type Flight struct {
 	PK            string    `json:"PK"`
 	SK            string    `json:"SK"`
 	FlightNumber  string    `json:"flightNumber"`
+	Airline       string    `json:"airline"`
+	Price         float64   `json:"price"`
 	Origin        string    `json:"origin"`
 	Destination   string    `json:"destination"`
 	DepartureDate string    `json:"departureDate"`

@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "serverless-appsync-plugin": "^2.8.0",
+    "serverless-import-plugin": "^0.0.6",
+    "serverless-prune-plugin": "^2.0.2",
+    "serverless-scriptable-plugin": "^1.3.1"
+  }
+}

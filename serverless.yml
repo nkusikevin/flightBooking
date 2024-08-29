@@ -14,7 +14,6 @@ functions:
       artifact: ./bin/addFlight.zip
     handler: bootstrap
     runtime: provided.al2
-
     events:
       - http:
           path: addFlight
@@ -24,7 +23,6 @@ functions:
       artifact: ./bin/getFlights.zip
     handler: bootstrap
     runtime: provided.al2
-
     events:
       - http:
           path: getFlights
@@ -34,9 +32,22 @@ custom:
   scriptable:
     hooks:
       before:package:createDeploymentArtifacts: make build
+  appSync:
+    name: ${self:service}-api
+    authentication:
+      type: AMAZON_COGNITO_USER_POOLS
+      config:
+        userPoolId: !ImportValue ${opt:stage, self:provider.stage, 'dev'}-UserPoolID
+    schema:
+      - "shared/graphql/*.graphql"
+      - "services/flights/api_public/schema/*.graphql"
+      - "services/flights/api_admin/schema/*.graphql"
 
 package:
   individually: true
 
 plugins:
   - serverless-scriptable-plugin
+  - serverless-import-plugin
+  - serverless-appsync-plugin
+  - serverless-prune-plugin
