@@ -1,0 +1,24 @@
+service: infrastructure
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  region: eu-central-1
+  stage: ${opt:stage, 'dev'}
+
+resources:
+  # Conditions
+
+  # DynamoDB
+  - ${file(resources/dynamodb/flightdb.yml)}
+
+  # Cognito
+  - ${file(resources/cognito/userpool.yml)}
+  - ${file(resources/cognito/groups.yml)}
+  # Assume Role
+
+  # EventBridge
+
+  ## Outputs
+  - ${file(resources/outputs/dynamodb.yml)}
+  - ${file(resources/outputs/cognito.yml)}

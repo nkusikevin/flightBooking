@@ -1,0 +1,25 @@
+Outputs:
+  UserPoolID:
+    Value: !Ref flightUserPool
+    Export:
+      Name: ${self:provider.stage}-UserPoolID
+  UserPoolArn:
+    Value: !GetAtt flightUserPool.Arn
+    Export:
+      Name: ${self:provider.stage}-UserPoolArn
+  UserPoolProviderUrl:
+    Value: !GetAtt flightUserPool.ProviderURL
+    Export:
+      Name: ${self:provider.stage}-UserPoolProviderUrl
+  UserPoolProviderName:
+    Value: !GetAtt flightUserPool.ProviderName
+    Export:
+      Name: ${self:provider.stage}-UserPoolProviderName
+  WebClientID:
+    Value: !Ref mansioWeb
+    Export:
+      Name: ${self:provider.stage}-WebClientID
+  PostmanClientID:
+    Value: !Ref mansioPostman
+    Export:
+      Name: ${self:provider.stage}-PostmanClientID

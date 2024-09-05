@@ -1,0 +1,14 @@
+functions:
+  addFlight:
+    package:
+      artifact: ./bin/addFlight.zip
+    handler: bootstrap
+    runtime: provided.al2
+    timeout: 15
+
+  getFlights:
+    package:
+      artifact: ./bin/getFlights.zip
+    handler: bootstrap
+    runtime: provided.al2
+    timeout: 15

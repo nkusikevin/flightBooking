@@ -1,0 +1,6 @@
+custom:
+  scriptable:
+    hooks:
+      before:package:createDeploymentArtifacts: make -f ../../../shared/make/Makefile build SEARCH_DIR=$(pwd)/.. WORK_DIR=$(pwd)
+plugins:
+  - serverless-scriptable-plugin

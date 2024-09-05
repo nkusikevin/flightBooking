@@ -1,0 +1,6 @@
+resources:
+  Outputs:
+    ApiID:
+      Value: ${appsync:id}
+      Export:
+        Name: ${self:service}-appid

@@ -1,0 +1,8 @@
+Resources:
+  ## ROLE Groups
+  flightGlobalAdministratorGroup:
+    Type: "AWS::Cognito::UserPoolGroup"
+    Properties:
+      Description: "Global Administrators belong to this group"
+      GroupName: "role:global-administrator"
+      UserPoolId: !Ref flightUserPool

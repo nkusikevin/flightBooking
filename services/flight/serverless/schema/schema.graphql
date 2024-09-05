@@ -1,0 +1,44 @@
+type Flight {
+	PK: ID!
+	SK: String!
+	flightNumber: String!
+	airline: String!
+	price: Float!
+	origin: String!
+	destination: String!
+	departureDate: String!
+	departureTime: String!
+	arrivalDate: String!
+	arrivalTime: String!
+	clientNames: String!
+	createdAt: AWSDateTime!
+	updatedAt: AWSDateTime!
+}
+
+input FlightInput {
+	flightNumber: String!
+	airline: String!
+	price: Float!
+	origin: String!
+	destination: String!
+	departureDate: String!
+	departureTime: String!
+	arrivalDate: String!
+	arrivalTime: String!
+}
+
+type Query {
+	getFlights: [Flight!]!
+	getUserFlights(username: String!): [Flight!]!
+}
+
+type Mutation {
+	addFlight(flight: FlightInput!): Flight!
+	updateFlight(flight: FlightInput!): Flight!
+	deleteFlight(flightNumber: String!): Boolean!
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}

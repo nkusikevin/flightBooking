@@ -1,0 +1,17 @@
+service: flights
+frameworkVersion: "3"
+
+plugins:
+  - serverless-import-plugin
+  - serverless-lift
+  - serverless-prune-plugin
+  - serverless-iam-roles-per-function
+provider:
+  name: aws
+  region: us-east-1
+
+custom:
+  import:
+    - ../../../shared/serverless/provider.yml
+    - ../../../shared/serverless/build_hook.yml
+    - functions.yml

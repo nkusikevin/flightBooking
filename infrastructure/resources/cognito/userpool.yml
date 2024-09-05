@@ -1,0 +1,72 @@
+Resources:
+  flightUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: flightusers-${self:provider.stage}
+      UsernameAttributes:
+        - email
+        - phone_number
+      DeletionProtection: ACTIVE
+      UserPoolAddOns:
+        AdvancedSecurityMode: "AUDIT"
+      LambdaConfig:
+        PreSignUp: !Sub
+          - arn:aws:lambda:${aws:region}:${aws:accountId}:function:cognitotriggers-${stage}-presignup
+          - { stage: "${opt:stage, self:provider.stage, 'dev'}" }
+        CustomMessage: !Sub
+          - arn:aws:lambda:${aws:region}:${aws:accountId}:function:cognitotriggers-${stage}-custommessages
+          - { stage: "${opt:stage, self:provider.stage, 'dev'}" }
+        PreTokenGenerationConfig:
+          LambdaArn: !Sub
+            - arn:aws:lambda:${aws:region}:${aws:accountId}:function:cognitotriggers-${stage}-pretokengeneration
+            - { stage: "${opt:stage, self:provider.stage, 'dev'}" }
+          LambdaVersion: V2_0
+
+  #mansioUserPoolDomain:
+  # Type: AWS::Cognito::UserPoolDomain
+  # Properties:
+  #   Domain: "mansio-flo${self:provider.stage}"
+  #   UserPoolId: !Ref mansioUserPool
+
+  flightWeb:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !Ref flightUserPool
+      CallbackURLs:
+        - "http://localhost:3005"
+      AllowedOAuthFlowsUserPoolClient: true
+      SupportedIdentityProviders:
+        - COGNITO
+      AllowedOAuthFlows:
+        - code
+      AllowedOAuthScopes:
+        - email
+        - openid
+        - phone
+        - profile
+
+  flightPostman:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      UserPoolId: !Ref flightUserPool
+      GenerateSecret: true
+      CallbackURLs:
+        - https://oauth.pstmn.io/v1/callback
+        - http://localhost:8080
+      AccessTokenValidity: 60
+      IdTokenValidity: 60
+      RefreshTokenValidity: 60
+      TokenValidityUnits:
+        AccessToken: minutes
+        IdToken: minutes
+        RefreshToken: days
+      AllowedOAuthFlowsUserPoolClient: true
+      SupportedIdentityProviders:
+        - COGNITO
+      AllowedOAuthFlows:
+        - code
+      AllowedOAuthScopes:
+        - email
+        - openid
+        - phone
+        - profile

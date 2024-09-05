@@ -1,0 +1,13 @@
+Outputs:
+  FligtDBTable:
+    Value: !Ref flightdb
+    Export:
+      Name: ${self:provider.stage}-FligtDBTable
+  MansioDBTableArn:
+    Value: !GetAtt flightdb.Arn
+    Export:
+      Name: ${self:provider.stage}-FligtDBTableArn
+  MansioDBTableStreamArn:
+    Value: !GetAtt flightdb.StreamArn
+    Export:
+      Name: FligtDBTableStreamArn

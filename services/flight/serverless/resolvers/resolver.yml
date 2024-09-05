@@ -1,0 +1,12 @@
+appSync:
+  resolvers:
+    addFlight:
+      type: Mutation
+      field: addFlight
+      kind: UNIT
+      dataSource:
+        type: AWS_LAMBDA
+        config:
+          functionArn: !Sub
+            - arn:aws:lambda:${AWS::Region}:${AWS::AccountId}:function:flights-${stage}-addFlight
+            - { stage: "${opt:stage, self:provider.stage, 'dev'}" }
