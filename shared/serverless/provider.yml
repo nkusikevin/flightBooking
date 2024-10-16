@@ -4,7 +4,7 @@ provider:
   stage: ${opt:stage, 'dev'}
   architecture: arm64
   environment:
-    FLIGHTS_TABLE: !ImportValue ${opt:stage, self:provider.stage, 'dev'}-flights
+    FLIGHT_BOOKING_DB_TABLE: !ImportValue ${opt:stage, self:provider.stage, 'dev'}-FlightBookingDBTable
   iam:
     role:
       statements:

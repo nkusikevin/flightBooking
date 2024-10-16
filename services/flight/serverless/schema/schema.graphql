@@ -28,7 +28,7 @@ input FlightInput {
 }
 
 type Query {
-	getFlights: [Flight!]!
+	getFlights(name: String!): String!
 	getUserFlights(username: String!): [Flight!]!
 }
 

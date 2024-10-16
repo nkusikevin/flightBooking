@@ -22,13 +22,13 @@ Resources:
             - { stage: "${opt:stage, self:provider.stage, 'dev'}" }
           LambdaVersion: V2_0
 
-  #mansioUserPoolDomain:
-  # Type: AWS::Cognito::UserPoolDomain
-  # Properties:
-  #   Domain: "mansio-flo${self:provider.stage}"
-  #   UserPoolId: !Ref mansioUserPool
+  flightUserPoolDomain:
+    Type: AWS::Cognito::UserPoolDomain
+    Properties:
+      Domain: "flight-arsene${self:provider.stage}"
+      UserPoolId: !Ref flightUserPool
 
-  flightWeb:
+  flightBookingWebClient:
     Type: AWS::Cognito::UserPoolClient
     Properties:
       UserPoolId: !Ref flightUserPool
@@ -45,7 +45,7 @@ Resources:
         - phone
         - profile
 
-  flightPostman:
+  flightBookingPostman:
     Type: AWS::Cognito::UserPoolClient
     Properties:
       UserPoolId: !Ref flightUserPool

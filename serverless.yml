@@ -34,7 +34,7 @@
 #   - serverless-appsync-plugin
 #   - serverless-prune-plugin
 
-service: bookflight
+service: flightBooking
 frameworkVersion: "3"
 plugins:
   - serverless-import-plugin
@@ -56,6 +56,6 @@ appSync:
   authentication:
     type: AMAZON_COGNITO_USER_POOLS
     config:
-      userPoolId: !ImportValue ${opt:stage, self:provider.stage, 'dev'}-UserPoolID
+      userPoolId: !ImportValue ${opt:stage, self:provider.stage, 'dev'}-FlightBookingUserPoolID
   schema:
     - "services/flight/serverless/schema/*.graphql"
