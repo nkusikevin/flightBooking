@@ -43,7 +43,7 @@ plugins:
   - serverless-prune-plugin
 provider:
   name: aws
-  region: "eu-central-1"
+  region: eu-central-1
   stage: ${opt:stage, 'dev'}
 
 custom:
