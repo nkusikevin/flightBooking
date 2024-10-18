@@ -28,8 +28,11 @@ input FlightInput {
 }
 
 type Query {
-	getFlights(name: String!): String!
+	getFlights(flight: FlightInputGet!): String!
 	getUserFlights(username: String!): [Flight!]!
+}
+input FlightInputGet {
+	name: String!
 }
 
 type Mutation {
