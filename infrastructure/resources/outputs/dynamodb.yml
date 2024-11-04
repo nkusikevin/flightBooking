@@ -1,13 +1,13 @@
 Outputs:
-  FligtDBTable:
-    Value: !Ref flightdb
+  FlightBookingDBTable:
+    Value: !Ref flightbookingdb
     Export:
-      Name: ${self:provider.stage}-FligtDBTable
-  MansioDBTableArn:
-    Value: !GetAtt flightdb.Arn
+      Name: ${self:provider.stage}-FlightBookingDBTable
+  FlightBookingDBTableArn:
+    Value: !GetAtt flightbookingdb.Arn
     Export:
-      Name: ${self:provider.stage}-FligtDBTableArn
-  MansioDBTableStreamArn:
-    Value: !GetAtt flightdb.StreamArn
+      Name: ${self:provider.stage}-FlightBookingDBTableArn
+  FlightBookingDBTableStreamArn:
+    Value: !GetAtt flightbookingdb.StreamArn
     Export:
-      Name: FligtDBTableStreamArn
+      Name: FlightBookingDBTableStreamArn

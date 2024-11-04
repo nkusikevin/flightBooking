@@ -1,5 +1,5 @@
 Resources:
-  flightdb:
+  flightbookingdb:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:

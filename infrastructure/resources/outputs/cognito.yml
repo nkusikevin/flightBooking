@@ -1,25 +1,25 @@
 Outputs:
-  UserPoolID:
+  FlightBookingUserPoolID:
     Value: !Ref flightUserPool
     Export:
-      Name: ${self:provider.stage}-UserPoolID
-  UserPoolArn:
+      Name: ${self:provider.stage}-FlightBookingUserPoolID
+  FlightBookingUserPoolArn:
     Value: !GetAtt flightUserPool.Arn
     Export:
-      Name: ${self:provider.stage}-UserPoolArn
-  UserPoolProviderUrl:
+      Name: ${self:provider.stage}-FlightBookingUserPoolArn
+  FlightBookingUserPoolProviderUrl:
     Value: !GetAtt flightUserPool.ProviderURL
     Export:
-      Name: ${self:provider.stage}-UserPoolProviderUrl
-  UserPoolProviderName:
+      Name: ${self:provider.stage}-FlightBookingUserPoolProviderUrl
+  FlightBookingUserPoolProviderName:
     Value: !GetAtt flightUserPool.ProviderName
     Export:
-      Name: ${self:provider.stage}-UserPoolProviderName
-  WebClientID:
-    Value: !Ref mansioWeb
+      Name: ${self:provider.stage}-FlightBookingUserPoolProviderName
+  FlightBookingWebClientID:
+    Value: !Ref flightBookingWebClient
     Export:
-      Name: ${self:provider.stage}-WebClientID
-  PostmanClientID:
-    Value: !Ref mansioPostman
+      Name: ${self:provider.stage}-FlightBookingWebClientID
+  FlightBookingPostmanClientID:
+    Value: !Ref flightBookingPostman
     Export:
-      Name: ${self:provider.stage}-PostmanClientID
+      Name: ${self:provider.stage}-FlightBookingPostmanClientID

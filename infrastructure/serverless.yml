@@ -1,4 +1,4 @@
-service: infrastructure
+service: flightBookingInfrastructure
 frameworkVersion: "3"
 
 provider:
@@ -10,7 +10,7 @@ resources:
   # Conditions
 
   # DynamoDB
-  - ${file(resources/dynamodb/flightdb.yml)}
+  - ${file(resources/dynamodb/flightbookingdb.yml)}
 
   # Cognito
   - ${file(resources/cognito/userpool.yml)}
